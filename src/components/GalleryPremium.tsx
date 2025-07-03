@@ -127,7 +127,7 @@ export default function GalleryPremium() {
                     : 'text-luxury-gray-500 hover:text-luxury-gray-700'
                 }`}
               >
-                {categories[categoryKey].title}
+                {categories[categoryKey as keyof typeof categories].title}
               </button>
             ))}
           </motion.div>
@@ -141,7 +141,7 @@ export default function GalleryPremium() {
           >
             {/* Gallery Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-              {categories[activeCategory].images.map((image, index) => (
+              {categories[activeCategory as keyof typeof categories].images.map((image, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 50 }}

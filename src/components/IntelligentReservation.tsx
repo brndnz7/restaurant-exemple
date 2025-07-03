@@ -9,7 +9,13 @@ export default function IntelligentReservation() {
   const [selectedDate, setSelectedDate] = useState('')
   const [selectedTime, setSelectedTime] = useState('')
   const [guests, setGuests] = useState(2)
-  const [preferences, setPreferences] = useState({
+  const [preferences, setPreferences] = useState<{
+    dietary: string[];
+    occasion: string;
+    table: string;
+    wine: boolean;
+    specialRequests: string;
+  }>({
     dietary: [],
     occasion: '',
     table: '',

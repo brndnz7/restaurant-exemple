@@ -34,33 +34,33 @@ export default function TeamPortraits() {
   ]
 
   return (
-    <section className="py-32 bg-luxury-black text-luxury-white">
+    <section className="py-12 sm:py-16 md:py-24 lg:py-32 bg-luxury-black text-luxury-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section title - minimal */}
+        {/* Section title - responsive */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-24"
+          className="mb-12 sm:mb-16 md:mb-20 lg:mb-24"
         >
-          <h2 className="font-display text-sm tracking-widest uppercase text-luxury-gray-400 mb-4">
+          <h2 className="font-display text-sm tracking-widest uppercase text-luxury-gray-400 mb-3 sm:mb-4">
             L'Équipe
           </h2>
-          <h3 className="font-serif text-4xl md:text-5xl font-light">
+          <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light">
             Artisans de l'Excellence
           </h3>
         </motion.div>
 
-        {/* Team grid - asymmetric layout */}
-        <div className="grid grid-cols-12 gap-8">
-          {/* Main portrait - large space */}
+        {/* Team layout - stack on mobile, side-by-side on desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
+          {/* Main portrait - full width on mobile */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="col-span-12 lg:col-span-7"
+            className="lg:col-span-7"
           >
             <div className="relative aspect-square overflow-hidden group cursor-pointer">
               <img
@@ -73,13 +73,13 @@ export default function TeamPortraits() {
               {/* Overlay with info */}
               <div className="absolute inset-0 bg-luxury-black/0 group-hover:bg-luxury-black/20 transition-all duration-500" />
               
-              {/* Name overlay */}
-              <div className="absolute bottom-8 left-8 right-8">
-                <div className="border-t border-luxury-white pt-6">
-                  <h4 className="font-serif text-3xl font-light mb-2">
+              {/* Name overlay - responsive text */}
+              <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8">
+                <div className="border-t border-luxury-white pt-4 sm:pt-6">
+                  <h4 className="font-serif text-xl sm:text-2xl md:text-3xl font-light mb-1 sm:mb-2">
                     {teamMembers[activePortrait].name}
                   </h4>
-                  <p className="font-display text-sm tracking-widest uppercase text-luxury-gray-300">
+                  <p className="font-display text-xs sm:text-sm tracking-widest uppercase text-luxury-gray-300">
                     {teamMembers[activePortrait].role}
                   </p>
                 </div>
@@ -87,49 +87,49 @@ export default function TeamPortraits() {
             </div>
           </motion.div>
 
-          {/* Info panel */}
+          {/* Info panel - responsive spacing */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
             viewport={{ once: true }}
-            className="col-span-12 lg:col-span-5 lg:pl-8"
+            className="lg:col-span-5 lg:pl-8 mt-6 lg:mt-0"
           >
             <div className="h-full flex flex-col justify-center">
-              {/* Navigation dots */}
-              <div className="flex space-x-4 mb-12">
+              {/* Navigation dots - responsive */}
+              <div className="flex space-x-3 sm:space-x-4 mb-8 sm:mb-10 md:mb-12 justify-center lg:justify-start">
                 {teamMembers.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setActivePortrait(index)}
-                    className={`w-3 h-3 transition-all duration-300 ${
+                    className={`w-2 h-2 sm:w-3 sm:h-3 transition-all duration-300 ${
                       activePortrait === index ? 'bg-luxury-white' : 'bg-luxury-gray-600 hover:bg-luxury-gray-400'
                     }`}
                   />
                 ))}
               </div>
 
-              {/* Experience */}
-              <div className="mb-8">
-                <div className="w-12 h-px bg-luxury-white mb-4" />
+              {/* Experience - responsive */}
+              <div className="mb-6 sm:mb-8 text-center lg:text-left">
+                <div className="w-8 sm:w-10 md:w-12 h-px bg-luxury-white mb-3 sm:mb-4 mx-auto lg:mx-0" />
                 <p className="font-display text-xs tracking-widest uppercase text-luxury-gray-400 mb-2">
                   Expérience
                 </p>
-                <p className="font-serif text-xl">
+                <p className="font-serif text-lg sm:text-xl">
                   {teamMembers[activePortrait].experience}
                 </p>
               </div>
 
-              {/* Story */}
-              <div className="mb-8">
-                <p className="font-serif text-lg leading-relaxed text-luxury-gray-300">
+              {/* Story - responsive text */}
+              <div className="mb-6 sm:mb-8 text-center lg:text-left">
+                <p className="font-serif text-base sm:text-lg leading-relaxed text-luxury-gray-300">
                   {teamMembers[activePortrait].story}
                 </p>
               </div>
 
-              {/* Philosophy quote */}
-              <div>
-                <blockquote className="font-serif text-xl italic font-light border-l-2 border-luxury-white pl-6">
+              {/* Philosophy quote - responsive */}
+              <div className="text-center lg:text-left">
+                <blockquote className="font-serif text-lg sm:text-xl italic font-light border-l-2 border-luxury-white pl-4 sm:pl-6 mx-auto lg:mx-0 max-w-md lg:max-w-none">
                   {teamMembers[activePortrait].philosophy}
                 </blockquote>
               </div>
@@ -137,8 +137,8 @@ export default function TeamPortraits() {
           </motion.div>
         </div>
 
-        {/* Team navigation - minimal */}
-        <div className="mt-20 flex justify-center space-x-12">
+        {/* Team navigation - responsive and simplified on mobile */}
+        <div className="mt-12 sm:mt-16 md:mt-20 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 md:space-x-12">
           {teamMembers.map((member, index) => (
             <button
               key={index}

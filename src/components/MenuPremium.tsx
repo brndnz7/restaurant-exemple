@@ -149,7 +149,7 @@ export default function MenuPremium() {
                     : 'text-luxury-gray-500 hover:text-luxury-gray-700'
                 }`}
               >
-                {menus[menuKey].title}
+                {menus[menuKey as keyof typeof menus].title}
               </button>
             ))}
           </motion.div>
@@ -164,23 +164,23 @@ export default function MenuPremium() {
             {/* Menu Header */}
             <div className="text-center mb-20">
               <h2 className="font-serif text-5xl md:text-6xl font-light text-luxury-black mb-6">
-                {menus[activeMenu].title}
+                {menus[activeMenu as keyof typeof menus].title}
               </h2>
               <p className="font-display text-sm tracking-widest uppercase text-luxury-gray-500 mb-8">
-                {menus[activeMenu].subtitle}
+                {menus[activeMenu as keyof typeof menus].subtitle}
               </p>
               <div className="w-24 h-px bg-luxury-black mx-auto mb-8" />
               <p className="font-serif text-xl text-luxury-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-                {menus[activeMenu].description}
+                {menus[activeMenu as keyof typeof menus].description}
               </p>
               <div className="font-serif text-4xl font-light text-luxury-black">
-                {menus[activeMenu].price}
+                {menus[activeMenu as keyof typeof menus].price}
               </div>
             </div>
 
             {/* Dishes */}
             <div className="space-y-16">
-              {menus[activeMenu].dishes.map((dish, index) => (
+              {menus[activeMenu as keyof typeof menus].dishes.map((dish, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
